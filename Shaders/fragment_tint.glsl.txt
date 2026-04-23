@@ -1,0 +1,16 @@
+#version 330 core
+in vec3 vFragPos;
+in vec3 vNormal;
+in vec2 vUV;
+
+out vec4 fragColor;
+
+uniform sampler2D tex0;
+uniform vec3  tint;
+uniform float glowStr;
+
+void main()
+{
+    vec4 texColor = texture(tex0, vUV);
+    fragColor     = vec4(vec3(texColor) * tint * glowStr, texColor.a);
+}
